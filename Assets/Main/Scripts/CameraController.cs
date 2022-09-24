@@ -10,33 +10,42 @@ namespace Metaverse
          * AUXILIAR MEMBERS
          * ============================================================*/
         private Vector3 _touchStart;
+        private Camera _camera;
 
 
         /* ============================================================
          * SERIALIZED FIELDS
          * ============================================================*/
-        [SerializeField]
-        private float m_ZoomSpeedMouseWheel = 2f;
-
-        [SerializeField]
-        private float m_ZoomSpeedTouch = 0.01f;
-
+        [Header("Common")]
         [SerializeField]
         private float m_ZoomOutMin = 1f;
 
         [SerializeField]
         private float m_ZoomOutMax = 20f;
 
+        [Header("Desktop")]
+        [SerializeField]
+        private float m_MouseWheelSpeed = 2f;
+
+        [Header("Mobile")]
+        [SerializeField]
+        private float m_TouchPinchSpeed = 0.01f;
+
 
         /* ============================================================
          * UNITY MESSAGES
          * ============================================================*/
+        private void Awake()
+        {
+            _camera = GetComponent<Camera>();
+        }
+
         private void Update()
         {
 #if UNITY_IOS || UNITY_ANDROID
             if (Input.touchCount == 1)
             {
-                #region Touch | Pan
+            #region Touch | Pan
                 Touch touchZero = Input.GetTouch(0);
                 if (touchZero.phase == TouchPhase.Began)
                 {
@@ -44,14 +53,13 @@ namespace Metaverse
                 }
                 else if (touchZero.phase == TouchPhase.Moved)
                 {
-                    Vector3 direction = _touchStart - Camera.main.ScreenToWorldPoint(touchZero.position);
-                    Camera.main.transform.position += direction;
+                    Pan(_touchStart - Camera.main.ScreenToWorldPoint(touchZero.position));
                 }
-                #endregion
+            #endregion
             }
             else if (Input.touchCount == 2)
             {
-                #region Touch | Zoom
+            #region Touch | Zoom
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
 
@@ -63,9 +71,9 @@ namespace Metaverse
 
                 float difference = currentMagnitude - prevMagnitude;
                 Zoom(m_ZoomSpeedTouch * difference);
-                #endregion
+            #endregion
 
-                #region Touch | Pan
+            #region Touch | Pan
                 if (touchZero.phase == TouchPhase.Ended)
                 {
                     _touchStart = Camera.main.ScreenToWorldPoint(touchOne.position);
@@ -74,7 +82,7 @@ namespace Metaverse
                 {
                     _touchStart = Camera.main.ScreenToWorldPoint(touchZero.position);
                 }
-                #endregion
+            #endregion
             }
 #endif
 
@@ -87,13 +95,12 @@ namespace Metaverse
 
             if (Input.GetMouseButton(0))
             {
-                Vector3 direction = _touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Camera.main.transform.position += direction;
+                Pan(_touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
             #endregion
 
             #region Mouse | Zoom
-            Zoom(m_ZoomSpeedMouseWheel * Input.GetAxis("Mouse ScrollWheel"));
+            Zoom(m_MouseWheelSpeed * Input.GetAxis("Mouse ScrollWheel"));
             #endregion
 #endif
         }
@@ -102,9 +109,15 @@ namespace Metaverse
         /* ============================================================
          * PRIVATE FUNCTIONS
          * ============================================================*/
+        private void Pan(Vector3 direction)
+        {
+            Vector3 newPosition = _camera.transform.position + direction;
+            _camera.transform.position = newPosition;
+        }
+
         private void Zoom(float increment)
         {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, m_ZoomOutMin, m_ZoomOutMax);
+            _camera.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, m_ZoomOutMin, m_ZoomOutMax);
         }
     }
 }
