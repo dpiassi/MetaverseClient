@@ -27,7 +27,7 @@ namespace Metaverse.City
         /* ============================================================
          * PUBLIC FUNCTIONS
          * ============================================================*/
-        public void Build()
+        public BuildingBlueprint Build()
         {
             if (m_Built)
             {
@@ -39,6 +39,7 @@ namespace Metaverse.City
                 BuildingFactory.Instance.AttachBuilding(m_Building, transform);
                 RefreshColliderBounds();
                 m_Built = true;
+                return m_Building;
             }
         }
 

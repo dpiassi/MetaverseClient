@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Metaverse.Game
 {
+    [DisallowMultipleComponent]
     public class GameManager : MonoBehaviour
     {
         /* ============================================================
@@ -28,8 +29,6 @@ namespace Metaverse.Game
         /* ============================================================
          * REFERENCE TO ATTACHED OBJECTS
          * ============================================================*/
-        private UserBuildingSteps _userBuildingSteps;
-
         private AbstractSteps _runningSteps = null;
 
 
@@ -38,8 +37,7 @@ namespace Metaverse.Game
          * ============================================================*/
         private void Start()
         {
-            _userBuildingSteps = gameObject.AddComponent<UserBuildingSteps>();
-            _runningSteps = _userBuildingSteps;
+            RunUserBuildingSteps();
         }
 
         private void Update()
@@ -48,6 +46,18 @@ namespace Metaverse.Game
             {
                 _runningSteps.RunAll(this);
                 _runningSteps = null;
+            }
+        }
+
+        public void RunUserBuildingSteps()
+        {
+            if (_runningSteps == null || !_runningSteps.IsRunning)
+            {
+                _runningSteps = gameObject.GetComponent<UserBuildingSteps>();
+                if (_runningSteps == null)
+                {
+                    _runningSteps = gameObject.AddComponent<UserBuildingSteps>();
+                }
             }
         }
     }
