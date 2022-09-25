@@ -6,11 +6,25 @@ namespace Metaverse.Building
 {
     public class BuildingFactory : Singleton<BuildingFactory>
     {
+        /* ============================================================
+         * SERIALIZED FIELDS
+         * ============================================================*/
         [SerializeField]
         private GameObject[] m_Prefabs;
 
-        private const int SCHEME_GRID_SIZE = 64;
+        [SerializeField]
+        private Texture2D[] m_Thumbnails;
 
+
+        /* ============================================================
+         * PUBLIC CONSTANTS
+         * ============================================================*/
+        public const int SCHEME_GRID_SIZE = 69;
+
+
+        /* ============================================================
+         * FACTORY METHOD PATERN
+         * ============================================================*/
         public GameObject GetBuilding(BuildingBlueprint building)
         {
             if (building.IsVacant())
@@ -34,6 +48,12 @@ namespace Metaverse.Building
             instance.transform.parent = parent;
             instance.transform.localPosition = Vector3.zero;
             instance.transform.localRotation = Quaternion.identity;
+        }
+
+        public Texture2D GetThumbnail(BuildingType type)
+        {
+            int index = (int)type - 1;
+            return m_Thumbnails[index];
         }
     }
 }

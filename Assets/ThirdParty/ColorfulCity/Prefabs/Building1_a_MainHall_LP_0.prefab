@@ -98,6 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   properties:
-    schemeGrid: 64
+    schemeGrid: 128
     currentScheme: 0
   mesh: {fileID: 4300000, guid: 04282c62c8486c14cb3c7448eb4fd8ae, type: 3}

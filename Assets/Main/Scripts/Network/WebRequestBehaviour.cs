@@ -1,5 +1,3 @@
-using System.Collections.Specialized;
-using System.Web;
 using UnityEngine;
 
 namespace Metaverse.Network
@@ -16,18 +14,7 @@ namespace Metaverse.Network
         private HTTPMethod m_Method;
 
         [SerializeField]
-        private Parameter[] m_Parameters;
-
-
-        /* ============================================================
-         * SERIALIZABLE CLASS
-         * ============================================================*/
-        [System.Serializable]
-        public class Parameter
-        {
-            public string Key;
-            public string Value;
-        }
+        private QueryParameter[] m_Parameters;
 
 
         /* ============================================================
@@ -35,21 +22,11 @@ namespace Metaverse.Network
          * ============================================================*/
         private void Start()
         {
-            WebRequest request = new(BuildURL(), m_Method);
+            string url = QueryParameter.Build(m_Endpoint, m_Parameters);
+            WebRequest request = new(url, m_Method);
             request.OnResponseSuccess += Debug.Log;
             request.OnResponseError += Debug.LogError;
-            request.Send(m_Parameters);
-        }
-
-        private string BuildURL()
-        {
-            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
-            foreach (var parameter in m_Parameters)
-            {
-                queryString.Add(parameter.Key, parameter.Value);
-            }
-            Debug.LogWarning(queryString.ToString());
-            return $"{m_Endpoint}?{queryString}";
+            request.Send();
         }
     }
 }

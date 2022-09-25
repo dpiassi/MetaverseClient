@@ -25,7 +25,7 @@ namespace Metaverse.Network
         /* ============================================================
          * CONSTRUCTORS
          * ============================================================*/
-        public WebRequest(string url, HTTPMethod method)
+        public WebRequest(string url, HTTPMethod method = HTTPMethod.GET)
         {
             URL = url;
             METHOD = method.ToString();
