@@ -2,7 +2,7 @@ namespace Metaverse.Building
 {
     public enum BuildingType
     {
-        Vacant = 0,
+        None = 0,
         MainHall = 1,
         Long1 = 2,
         Tall1 = 3,

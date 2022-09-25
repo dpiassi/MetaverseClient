@@ -25,22 +25,9 @@ namespace Metaverse.Building
         /* ============================================================
          * PUBLIC FUNCTIONS
          * ============================================================*/
-        public bool IsVacant()
+        public void RandomizeColor()
         {
-            return m_Type == BuildingType.Vacant;
-        }
-
-
-        /* ============================================================
-         * CONSTRUCTORS
-         * ============================================================*/
-        public BuildingBlueprint(bool random = false)
-        {
-            if (random)
-            {
-                m_ColorScheme = Random.Range(0, BuildingFactory.SCHEME_GRID_SIZE);
-                m_Type = (BuildingType)Random.Range(1, 15);
-            }
+            m_ColorScheme = Random.Range(0, BuildingFactory.SCHEME_GRID_SIZE);
         }
     }
 }

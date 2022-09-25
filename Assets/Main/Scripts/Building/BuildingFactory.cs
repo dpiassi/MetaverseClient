@@ -27,9 +27,9 @@ namespace Metaverse.Building
          * ============================================================*/
         public GameObject GetBuilding(BuildingBlueprint building)
         {
-            if (building.IsVacant())
+            if (building.Type == BuildingType.None)
             {
-                throw new UnityException("There isn't prefab assigned to Vacant (BuildType).");
+                throw new UnityException("There isn't prefab assigned to None (BuildType).");
             }
             else
             {

@@ -11,28 +11,34 @@ namespace Metaverse.City
          * SERIALIZED FIELDS
          * ============================================================*/
         [SerializeField]
-        private BuildingBlueprint m_Building = null;
+        private bool m_Built = false;
+
+        [SerializeField]
+        private BuildingBlueprint m_Building;
+
+
+        /* ============================================================
+         * PUBLIC PROPERTIES
+         * ============================================================*/
+        public bool IsBuilt => m_Built;
+        public BuildingType BuildingType => m_Building.Type;
 
 
         /* ============================================================
          * PUBLIC FUNCTIONS
          * ============================================================*/
-        public bool IsVacant()
+        public void Build()
         {
-            return m_Building == null || m_Building.IsVacant();
-        }
-
-        public void Build(BuildingBlueprint building)
-        {
-            if (IsVacant())
+            if (m_Built)
             {
-                m_Building = building;
-                BuildingFactory.Instance.AttachBuilding(m_Building, transform);
-                RefreshColliderBounds();
+                throw new UnityException("You can't build over an occupied lot!");
             }
             else
             {
-                throw new UnityException("You can't build over an occupied lot!");
+                m_Building.RandomizeColor();
+                BuildingFactory.Instance.AttachBuilding(m_Building, transform);
+                RefreshColliderBounds();
+                m_Built = true;
             }
         }
 
@@ -54,7 +60,7 @@ namespace Metaverse.City
          * ============================================================*/
         private void Start()
         {
-            if (!IsVacant())
+            if (m_Built)
             {
                 BuildingFactory.Instance.AttachBuilding(m_Building, transform);
                 RefreshColliderBounds();
