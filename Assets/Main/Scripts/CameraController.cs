@@ -70,7 +70,7 @@ namespace Metaverse
                 float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
 
                 float difference = currentMagnitude - prevMagnitude;
-                Zoom(m_ZoomSpeedTouch * difference);
+                Zoom(m_TouchPinchSpeed * difference);
             #endregion
 
             #region Touch | Pan

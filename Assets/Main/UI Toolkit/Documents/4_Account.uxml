@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center; background-image: none;">
+        <ui:VisualElement name="PopUp" style="width: 249px; height: 221px; background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+            <ui:VisualElement name="Header" style="width: 100%; align-items: center; height: 60px; justify-content: center; border-top-left-radius: 20px; border-top-right-radius: 20px; background-color: rgb(245, 245, 245); margin-bottom: 10px;">
+                <ui:Label text="Conta" display-tooltip-when-elided="true" name="Title" style="font-size: 22px; -unity-font-style: bold; color: rgb(255, 56, 102); margin-top: 10px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Content" style="align-items: center; flex-direction: column; height: 80%; justify-content: space-around; font-size: 15px; -unity-font-style: bold; margin-bottom: 0;">
+                <ui:VisualElement name="Texts" style="align-items: flex-start; height: auto; width: 214px;">
+                    <ui:Label text="Total Investimentos: 500,00" display-tooltip-when-elided="true" name="Text" enable-rich-text="false" style="flex-wrap: nowrap; white-space: normal; -unity-text-align: upper-center; color: rgb(125, 125, 125); margin-top: 0; font-size: 13px;" />
+                    <ui:Label text="Total Conta Corrente: 200,00" display-tooltip-when-elided="true" name="Text" enable-rich-text="false" style="flex-wrap: nowrap; white-space: normal; -unity-text-align: upper-left; color: rgb(125, 125, 125); margin-top: 10px; align-items: flex-start; font-size: 13px; margin-bottom: 10px;" />
+                    <ui:Label text="Total: 700,00" display-tooltip-when-elided="true" name="Text" enable-rich-text="true" style="flex-wrap: nowrap; white-space: normal; -unity-text-align: upper-center; color: rgb(125, 125, 125); margin-top: 0; font-size: 13px;" />
+                </ui:VisualElement>
+                <ui:Button text="Ok" display-tooltip-when-elided="true" style="height: 30px; width: 124px; background-color: rgb(255, 56, 102); font-size: 18px; -unity-font-style: bold; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-bottom: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
