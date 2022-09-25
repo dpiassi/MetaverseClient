@@ -1,0 +1,9 @@
+.input {
+    height: 54px;
+    font-size: 18px;
+    -unity-font-style: bold;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 0;
+}

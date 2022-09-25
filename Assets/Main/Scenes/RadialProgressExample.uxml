@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/RadialProgress.uss?fileID=7433441132597879392&amp;guid=a563df3992c114a80b408a9b02d4cb8f&amp;type=3#RadialProgress" />
+    <ui:VisualElement name="XP" class="radial-progress" style="align-items: center; width: 120px; flex-direction: row; justify-content: center;">
+        <ui:VisualElement name="Background" tabindex="0" focusable="false" style="position: absolute; width: 60px; height: 60px; background-image: url(&apos;project://database/Assets/Main/Textures/Polygon.png?fileID=2800000&amp;guid=6b3f432baf8bf4386890b84d804dada6&amp;type=3#Polygon&apos;); overflow: visible; display: flex; visibility: visible; opacity: 1;" />
+        <MyUILibrary.RadialProgress progress="87.1" class="radial-progress__label" style="width: 100px; height: 100px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; background-image: none; align-items: center;" />
+    </ui:VisualElement>
+</ui:UXML>
