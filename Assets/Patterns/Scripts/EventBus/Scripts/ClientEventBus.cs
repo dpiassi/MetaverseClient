@@ -8,7 +8,6 @@ namespace Patterns.EventBus
         
         void Start()
         {
-            gameObject.AddComponent<HUDController>();
             gameObject.AddComponent<CountdownTimer>();
             gameObject.AddComponent<BikeController>();
 
