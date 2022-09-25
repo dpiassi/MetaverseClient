@@ -35,7 +35,7 @@ namespace Metaverse.Network
         /* ============================================================
          * PUBLIC FUNCTIONS
          * ============================================================*/
-        public void Send(string json = null)
+        public void Send(object json = null)
         {
             NewRequest(json).completed += OnResponse;
         }
