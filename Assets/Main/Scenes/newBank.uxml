@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center; background-image: none;">
+        <ui:VisualElement name="PopUp" style="width: 249px; height: 293px; background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; align-items: center; padding-left: 15px; padding-right: 15px; padding-top: 20px; padding-bottom: 20px;">
+            <ui:VisualElement name="Content" style="align-items: center; flex-direction: column;">
+                <ui:VisualElement name="Icon" style="width: 40px; height: 35px; margin-top: 0; background-image: url(&apos;project://database/Assets/Main/Textures/newBankIcon.png?fileID=2800000&amp;guid=4b4087c337cba405786d00b09b815c43&amp;type=3#newBankIcon&apos;);" />
+                <ui:Label text="Parabéns" display-tooltip-when-elided="true" name="Title" style="font-size: 22px; -unity-font-style: bold; color: rgb(255, 56, 102); margin-top: 10px;" />
+                <ui:Label text="Você acabou de conectar seus dados da instituiçao XXXX ao Open Finance. Adicione mais contas para liberar novas construções!" display-tooltip-when-elided="true" name="Text" style="flex-wrap: nowrap; white-space: normal; -unity-text-align: upper-center; color: rgb(125, 125, 125); margin-top: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Build" style="width: 114px; height: 64px; background-image: url(&apos;project://database/Assets/Main/Textures/build%2016.png?fileID=2800000&amp;guid=a95d26bd46f07495f9c1b6fc06488693&amp;type=3#build 16&apos;); margin-top: 10px; margin-bottom: 10px;" />
+            <ui:Button text="Ok" display-tooltip-when-elided="true" style="height: 30px; width: 124px; background-color: rgba(255, 56, 102, 255); font-size: 18px; -unity-font-style: bold; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

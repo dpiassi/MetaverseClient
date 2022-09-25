@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/input.uss?fileID=7433441132597879392&amp;guid=7cd06cb00fc414bb6b53a19a11c94930&amp;type=3#input" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="Login" style="height: 286px; width: 222px; background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+            <ui:VisualElement name="Header" style="height: 59px; background-color: rgb(245, 245, 245); border-top-right-radius: 20px; border-top-left-radius: 20px; align-items: center; justify-content: center;">
+                <ui:Label text="Login" display-tooltip-when-elided="true" name="Title" style="font-size: 25px; -unity-font-style: bold; color: rgb(255, 56, 102);" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; justify-content: flex-start;">
+                <ui:TextField picking-mode="Ignore" value="oi" name="CPF" is-delayed="true" readonly="false" multiline="false" label="CPF" class="input" style="margin-bottom: 10px; margin-top: 20px; background-color: rgb(255, 255, 255); padding-left: 10px; padding-right: 10px;" />
+                <ui:TextField picking-mode="Ignore" label="Senha" text="&#10;" name="Senha" class="input" style="flex-direction: column; margin-bottom: 0; padding-left: 10px; padding-right: 10px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ButtonView" style="flex-grow: 1; justify-content: flex-end; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; align-items: center;">
+                <ui:Button text="Log in" display-tooltip-when-elided="true" focusable="true" style="justify-content: flex-end; align-items: center; width: 126px; height: 32px; -unity-font-style: bold; font-size: 15px; background-color: rgb(255, 56, 102); -unity-text-outline-color: rgb(255, 56, 102); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
