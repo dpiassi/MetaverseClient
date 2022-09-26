@@ -3,8 +3,12 @@ namespace Metaverse.Network
 {
     public static class Endpoints
     {
-        public const string GetUserAccounts = "https://nsrcynmxybx36q5o74vcxo5jpe0jqpmy.lambda-url.sa-east-1.on.aws/";
-        public const string TestEndpoint = "https://yigikwdvz65sjbpfx34sxjwfju0jgvgo.lambda-url.sa-east-1.on.aws/";
-        public const string CreateUserBuilding = "https://anyfngzkkk75325f2syywz326i0pcpty.lambda-url.sa-east-1.on.aws/";
+        private const string BASE_URL = "https://k3tw1821cb.execute-api.sa-east-1.amazonaws.com/v-1/";
+        public const string ACCOUNT_BALANCE = BASE_URL + "account-balance"; // GET
+        public const string COINS = BASE_URL + "coins"; // POST, DELETE
+        public const string EXPERIENCE = BASE_URL + "experience"; // POST
+        public const string HEALTH_STATUS = BASE_URL + "health-status"; // GET
+        public const string USER_INFORMATION = BASE_URL + "user-information"; // GET
+        public const string USER_BUILDINGS = BASE_URL + "user-buildings"; // GET, POST
     }
 }

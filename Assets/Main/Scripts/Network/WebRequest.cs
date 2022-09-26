@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
 using UnityEngine;
@@ -56,7 +57,9 @@ namespace Metaverse.Network
                     OnResponseError?.Invoke(code.ToString());
                     return;
                 }
-                OnResponseSuccess?.Invoke(response);
+                JToken json = (JToken)JsonConvert.DeserializeObject(response);
+                string body = (string)json["body"];
+                OnResponseSuccess?.Invoke(body);
             }
         }
 

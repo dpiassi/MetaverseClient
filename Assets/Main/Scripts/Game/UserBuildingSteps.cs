@@ -1,3 +1,4 @@
+using System.Text;
 using Metaverse.Building;
 using Metaverse.City;
 using Metaverse.Network;
@@ -32,18 +33,18 @@ namespace Metaverse.Game
         {
             BlockThread();
             Debug.Log(nameof(SyncUserAccounts__FromServer));
-            QueryParameter parameter = new("customerId", "595.080.896-84"); // TODO get customerId
-            string url = QueryParameter.Build(Endpoints.GetUserAccounts, parameter);
+            QueryParameter parameter = new("customerId", PlayerPrefs.GetString("customerId"));
+            string url = QueryParameter.Build(Endpoints.USER_INFORMATION, parameter);
             WebRequest request = new(url);
             request.OnResponseSuccess += OnGetUserAccountsSuccess;
             request.OnResponseError += Debug.LogError;
             request.Send();
         }
 
-        private void OnGetUserAccountsSuccess(string response)
+        private void OnGetUserAccountsSuccess(string body)
         {
             Debug.Log(nameof(OnGetUserAccountsSuccess));
-            JArray accounts = (JArray)JsonConvert.DeserializeObject(response);
+            JArray accounts = (JArray)JsonConvert.DeserializeObject(body);
             foreach (JToken account in accounts)
             {
                 _organizationID = account["organizationID"].ToString();
@@ -106,21 +107,21 @@ namespace Metaverse.Game
             BlockThread();
             Debug.Log(nameof(SyncUserBuildings__ToServer));
             QueryParameter[] parameters = {
-            new("customerId", "595.080.896-84"), // TODO get customerId
+            new("customerId", PlayerPrefs.GetString("customerId")),
             new("color", _buildingBlueprint.ColorScheme.ToString()),
             new("land", ((int)_buildingBlueprint.Type).ToString())
         };
-            string url = QueryParameter.Build(Endpoints.GetUserAccounts, parameters);
+            string url = QueryParameter.Build(Endpoints.USER_INFORMATION, parameters);
             WebRequest request = new(url);
             request.OnResponseSuccess += OnGetUserBuildingsSuccess;
             request.OnResponseError += Debug.LogError;
             request.Send();
         }
 
-        private void OnGetUserBuildingsSuccess(string response)
+        private void OnGetUserBuildingsSuccess(string body)
         {
             Debug.Log(nameof(OnGetUserBuildingsSuccess));
-            JArray accounts = (JArray)JsonConvert.DeserializeObject(response);
+            JArray accounts = (JArray)JsonConvert.DeserializeObject(body);
             foreach (JToken account in accounts)
             {
                 ResumeThread();

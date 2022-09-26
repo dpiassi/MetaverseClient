@@ -37,6 +37,12 @@ namespace Metaverse.Game
          * ============================================================*/
         private void Start()
         {
+            if (!PlayerPrefs.HasKey("customerId"))
+            {
+                PlayerPrefs.SetString("customerId", "797.640.888-18");
+                PlayerPrefs.Save();
+            }
+
             RunUserBuildingSteps();
         }
 
