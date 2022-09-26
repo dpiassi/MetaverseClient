@@ -66,7 +66,7 @@ namespace Metaverse.Game
             Debug.Log(nameof(ShowDialog));
             BlockThread();
             Manager.CameraController.enabled = false;
-            _dialog = Instantiate(Manager.Dialog);
+            _dialog = Instantiate(Manager.NewBuildingDialog);
             UIDocument document = _dialog.GetComponent<UIDocument>();
             Texture2D thumb = BuildingFactory.Instance.GetThumbnail(_land.BuildingType);
 

@@ -1,5 +1,7 @@
 using UnityEngine;
-using System.Linq;
+using System.Collections.Generic;
+using System;
+using Random = UnityEngine.Random;
 
 namespace Metaverse.City
 {
@@ -10,12 +12,29 @@ namespace Metaverse.City
 
         private void Start()
         {
-
+            Random.InitState((int)DateTime.Now.Ticks);
         }
 
         public Land GetVacantLand()
         {
-            return m_Lands.First(land => !land.IsBuilt);
+            List<Land> available = new();
+            foreach (Land land in m_Lands)
+            {
+                if (!land.IsBuilt)
+                {
+                    available.Add(land);
+                }
+            }
+
+            if (available.Count > 0)
+            {
+                int index = Random.Range(0, available.Count);
+                return available[index];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

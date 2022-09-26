@@ -1,9 +1,10 @@
+using Patterns.Singleton;
 using UnityEngine;
 
 namespace Metaverse.Game
 {
     [DisallowMultipleComponent]
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
         /* ============================================================
          * SERIALIZED FIELDS
@@ -15,7 +16,10 @@ namespace Metaverse.Game
         private City.City m_City;
 
         [SerializeField]
-        private GameObject m_Dialog;
+        private GameObject m_NewBuildingDialog;
+
+        [SerializeField]
+        private GameObject m_SimpleDialog;
 
 
         /* ============================================================
@@ -23,7 +27,8 @@ namespace Metaverse.Game
          * ============================================================*/
         internal CameraController CameraController => m_CameraController;
         internal City.City City => m_City;
-        internal GameObject Dialog => m_Dialog;
+        internal GameObject NewBuildingDialog => m_NewBuildingDialog;
+        internal GameObject SimpleDialog => m_SimpleDialog;
 
 
         /* ============================================================
@@ -55,6 +60,10 @@ namespace Metaverse.Game
             }
         }
 
+
+        /* ============================================================
+         * PUBLIC FUNCTIONS
+         * ============================================================*/
         public void RunUserBuildingSteps()
         {
             if (_runningSteps == null || !_runningSteps.IsRunning)
@@ -63,6 +72,18 @@ namespace Metaverse.Game
                 if (_runningSteps == null)
                 {
                     _runningSteps = gameObject.AddComponent<UserBuildingSteps>();
+                }
+            }
+        }
+
+        public void RunBuildingClickSteps()
+        {
+            if (_runningSteps == null || !_runningSteps.IsRunning)
+            {
+                _runningSteps = gameObject.GetComponent<BuildingClickSteps>();
+                if (_runningSteps == null)
+                {
+                    _runningSteps = gameObject.AddComponent<BuildingClickSteps>();
                 }
             }
         }

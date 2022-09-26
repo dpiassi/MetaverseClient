@@ -56,6 +56,7 @@ namespace Metaverse.Game
                 else
                 {
                     IsRunning = false;
+                    Destroy(this);
                 }
             }
         }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Metaverse.Building;
 using Metaverse.Utils;
+using Metaverse.Game;
 
 namespace Metaverse.City
 {
@@ -63,6 +64,7 @@ namespace Metaverse.City
         {
             if (m_Built)
             {
+                m_Building.RandomizeColor();
                 BuildingFactory.Instance.AttachBuilding(m_Building, transform);
                 RefreshColliderBounds();
             }
@@ -75,6 +77,7 @@ namespace Metaverse.City
         protected override void OnMouseClick()
         {
             Debug.Log($"{gameObject.name} clicked.");
+            GameManager.Instance.RunBuildingClickSteps();
         }
     }
 }
